@@ -1,22 +1,25 @@
+import Paper from "@material-ui/core/Paper";
 import {
   CenterPaper,
   PhoneCard,
-  EmailCard,
-  UsernameCard,
-  NameCard,
-  OTPCard,
-  UploadCard,
+  // EmailCard,
+  // UsernameCard,
+  // NameCard,
+  // OTPCard,
+  // UploadCard,
 } from "../../components";
 
 export default function Join() {
   return (
-    <CenterPaper>
-      <PhoneCard />
-      <EmailCard />
+    <Paper elevation={0} sx={{ height: "98vh" }}>
+      <CenterPaper>
+        <PhoneCard />
+        {/* <EmailCard />
       <NameCard />
       <UsernameCard />
       <OTPCard />
-      <UploadCard />
-    </CenterPaper>
+      <UploadCard /> */}
+      </CenterPaper>
+    </Paper>
   );
 }
