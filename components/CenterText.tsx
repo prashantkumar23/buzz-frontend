@@ -11,6 +11,7 @@ export const CenterText: React.FC = ({ children }) => {
         flexDirection: "row",
         justifyContent: "center",
         backgroundColor: "background.default",
+        textAlign: "center",
       }}
     >
       {children}

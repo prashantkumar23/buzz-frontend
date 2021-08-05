@@ -7,14 +7,28 @@ import { SimpleButton } from "../Button/SimpleButton";
 import { SimpleInput } from "../Inputs/SimpleInput";
 import { CenterText } from "../CenterText";
 import { ArrowForward } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/styles";
+import { coreThemeObj } from "../../theme/theme";
+
+const useStyles = makeStyles({
+  typographyText: {
+    [coreThemeObj.breakpoints.only("xs")]: {
+      fontSize: "1.1rem",
+    },
+  },
+});
 
 export const NameCard: React.FC = () => {
+  const classes = useStyles();
+
   return (
     <Base>
       <Stack spacing={2} justifyContent="center" alignItems="center">
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
-            <Typography variant="h6">🤨 What's your full name</Typography>
+            <Typography variant="h6" className={classes.typographyText}>
+              🤨 What's your full name
+            </Typography>
           </CenterText>
         </Stack>
         <SimpleInput size="small" />

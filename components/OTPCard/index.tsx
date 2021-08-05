@@ -7,15 +7,27 @@ import { Base } from "../Base";
 import { SimpleButton } from "../Button/SimpleButton";
 import { CenterText } from "../CenterText";
 import { ArrowForward } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/styles";
+import { coreThemeObj } from "../../theme/theme";
+
+const useStyles = makeStyles({
+  typographyText: {
+    [coreThemeObj.breakpoints.only("xs")]: {
+      fontSize: "1.1rem",
+    },
+  },
+});
 
 export const OTPCard: React.FC = () => {
   const [otp, setOtp] = useState("");
+  const classes = useStyles();
+
   return (
     <Base>
       <Stack spacing={2} justifyContent="center" alignItems="center">
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
-            <Typography variant="h6">
+            <Typography variant="h6" className={classes.typographyText}>
               🔒 Enter the code we have just texted you
             </Typography>
           </CenterText>

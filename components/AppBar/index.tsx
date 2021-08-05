@@ -101,7 +101,6 @@ export const JunoAppBar: React.FC<JunoAppBarProps> = ({}) => {
           Profile
         </MenuItem>
       </Link>
-      <Divider color="primary" />
       <Link href="/house/me" passHref>
         <MenuItem
           sx={{
