@@ -1,4 +1,4 @@
-import Paper from "@material-ui/core/Paper";
+import Stack from "@material-ui/core/Stack";
 import {
   CenterPaper,
   PhoneCard,
@@ -11,15 +11,14 @@ import {
 
 export default function Join() {
   return (
-    <Paper elevation={0} sx={{ height: "98vh" }}>
-      <CenterPaper>
+    <CenterPaper>
+      <Stack
+        sx={{ height: "90vh" }}
+        alignItems="center"
+        justifyContent="center"
+      >
         <PhoneCard />
-        {/* <EmailCard />
-      <NameCard />
-      <UsernameCard />
-      <OTPCard />
-      <UploadCard /> */}
-      </CenterPaper>
-    </Paper>
+      </Stack>
+    </CenterPaper>
   );
 }

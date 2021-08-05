@@ -8,7 +8,6 @@ export const CenterPaper: React.FC = ({ children }) => {
       sx={{
         height: "auto",
         width: "100%",
-        // paddingBottom: "1.5rem",
       }}
       elevation={0}
     >
