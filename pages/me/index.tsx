@@ -4,16 +4,14 @@ import Container from "@material-ui/core/Container";
 import Stack from "@material-ui/core/Stack";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+// import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Instagram from "@material-ui/icons/Instagram";
-import Telegram from "@material-ui/icons/Telegram";
 import Twitter from "@material-ui/icons/Twitter";
 
 import { SimpleButton, FollowingDialog, CenterPaper } from "../../components";
 
-export default function Profile() {
+export default function MyProfile() {
   const [openFollowingDialog, setOpenFollowingDialog] = useState(false);
 
   return (
@@ -89,7 +87,7 @@ export default function Profile() {
           </Stack>
         </Grid>
         {/*  Follow button  */}
-        <Grid item xs={12} sx={{ width: "100%" }}>
+        {/* <Grid item xs={12} sx={{ width: "100%" }}>
           <Stack
             direction="row"
             justifyContent="center"
@@ -135,7 +133,7 @@ export default function Profile() {
               <MoreVertIcon />
             </IconButton>
           </Stack>
-        </Grid>
+        </Grid> */}
         {/*  Social Media link  */}
         <Grid item xs={12}>
           <Stack

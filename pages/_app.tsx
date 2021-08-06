@@ -36,6 +36,18 @@ export default function MyApp(props: AppProps) {
           styles={css`
             html,
             body {
+              @media only screen and (max-width: 500px) {
+                overflow-y: scroll;
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none; /* Internet Explorer 10+ */
+                scrollbar-color: transparent;
+
+                /* Chrome, Edge, and Safari */
+                *::-webkit-scrollbar {
+                  width: 0; /* Remove scrollbar space */
+                  background: transparent; /* Optional: just make scrollbar invisible */
+                }
+              }
               padding: 0;
               margin: 0;
             }
@@ -80,20 +92,23 @@ export default function MyApp(props: AppProps) {
               scrollbar-color: #c0c0c0 #fafafa;
             }
 
-            /* Chrome, Edge, and Safari */
-            *::-webkit-scrollbar {
-              width: 20px;
-            }
+            // /* Chrome, Edge, and Safari */
+            // *::-webkit-scrollbar {
+            //   // width: 20px;
 
-            *::-webkit-scrollbar-track {
-              background: #fafafa;
-            }
+            //   // width: 0; /* Remove scrollbar space */
+            //   // background: transparent; /* Optional: just make scrollbar invisible */
+            // }
 
-            *::-webkit-scrollbar-thumb {
-              background-color: #c0c0c0;
-              border-radius: 13px;
-              border: 9px solid #ffffff;
-            }
+            // *::-webkit-scrollbar-track {
+            //   background: #fafafa;
+            // }
+
+            // *::-webkit-scrollbar-thumb {
+            //   background-color: #c0c0c0;
+            //   // border-radius: 13px;
+            //   // border: 9px solid #ffffff;
+            // }
           `}
         />
         <button onClick={toggleDarkMode}>Click</button>

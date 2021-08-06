@@ -25,7 +25,6 @@ export const RulesDialog: React.FC<RulesDialog> = ({
     <Dialog
       open={openRuleDialog}
       onClose={handleCloseRuleDialog}
-      hideBackdrop
       TransitionComponent={Transition}
       sx={{
         "& .MuiDialog-paper": {
@@ -39,6 +38,7 @@ export const RulesDialog: React.FC<RulesDialog> = ({
           backgroundColor: "background.paper",
           [coreThemeObj.breakpoints.only("xs")]: {
             width: "20rem",
+            height: "25rem",
           },
         }}
       >
@@ -72,7 +72,7 @@ export const RulesDialog: React.FC<RulesDialog> = ({
                   </ListItemIcon>
                   <ListItemText
                     primary="Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Repellendus accusamus nam debitis"
+               "
                     primaryTypographyProps={{
                       noWrap: false,
                     }}

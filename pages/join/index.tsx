@@ -13,9 +13,9 @@ export default function Join() {
   return (
     <CenterPaper>
       <Stack
-        sx={{ height: "90vh" }}
+        sx={{ height: "90vh", paddingTop: "15vh" }}
         alignItems="center"
-        justifyContent="center"
+        // justifyContent="center"
       >
         <PhoneCard />
       </Stack>

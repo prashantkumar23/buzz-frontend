@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Box from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
-import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Container from "@material-ui/core/Container";
@@ -12,14 +11,15 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import ClearAllIcon from "@material-ui/icons/ClearAll";
 import HomeIcon from "@material-ui/icons/Home";
 import IconButton from "@material-ui/core/IconButton";
-import Link from "next/link";
 
 import {
   FollowingDialog,
   SimpleButton,
   RulesDialog,
   CenterPaper,
+  MemberCard,
 } from "../../components";
+import { coreThemeObj } from "../../theme/theme";
 
 export default function House() {
   const [openRuleDialog, setOpenRuleDialog] = useState(false);
@@ -76,7 +76,11 @@ export default function House() {
                 height: "2.2rem",
                 paddingLeft: 0,
                 paddingRight: 0,
-                backgroundColor: "background.default",
+                backgroundColor: "background.paper",
+                borderColor: "background.paper",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
               }}
               onClick={() => setOpenFollowingDialog(true)}
             >
@@ -90,7 +94,11 @@ export default function House() {
                 height: "2.2rem",
                 paddingLeft: 0,
                 paddingRight: 0,
-                backgroundColor: "background.default",
+                backgroundColor: "background.paper",
+                borderColor: "background.paper",
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
               }}
               onClick={() => setOpenRuleDialog(true)}
             >
@@ -126,7 +134,7 @@ export default function House() {
         {/*  About  */}
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Container maxWidth="sm">
-            <Typography variant="h5" color="primary">
+            <Typography variant="h5" color="primary" gutterBottom>
               About
             </Typography>
             <Typography color="primary">
@@ -158,7 +166,16 @@ export default function House() {
                   overflowY: "hidden",
                 }}
               >
-                <Stack direction="row">
+                <Stack
+                  direction="row"
+                  sx={{
+                    [coreThemeObj.breakpoints.only("xs")]: {
+                      overflowX: "scroll",
+                      scrollbarWidth: "none" /* Firefox */,
+                      msOverflowStyle: "none" /* Internet Explorer 10+ */,
+                    },
+                  }}
+                >
                   {Array.from(Array(5)).map((_, index) => (
                     <Chip
                       sx={{
@@ -188,84 +205,27 @@ export default function House() {
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Container maxWidth="sm">
             <Stack direction="column">
-              <Typography color="primary">500 Members</Typography>
+              <Typography color="primary" gutterBottom>
+                500 Members
+              </Typography>
               <div
                 style={{
                   overflow: "scroll",
                   overflowX: "hidden",
                 }}
               >
-                <Stack sx={{ height: "120vh" }}>
-                  {Array.from(Array(10)).map(() => (
-                    <Paper
-                      elevation={0}
-                      sx={{
-                        height: "auto",
-                        margin: "1rem",
-                        marginLeft: 0,
-                        marginRight: 0,
-                        cursor: "pointer",
-                        // borderColor: "background.default",
-                        backgroundColor: "background.default",
-
-                        padding: "0 0.25rem",
-                        borderRadius: "0.75rem",
-                      }}
-                      variant="outlined"
-                    >
-                      <Grid container>
-                        <Grid item xs={3}>
-                          <Link href="/profile/prashant" passHref>
-                            <Avatar
-                              sx={{
-                                cursor: "pointer",
-                                width: "3.5rem",
-                                height: "3.5rem",
-                              }}
-                              src={
-                                "https://helostatus.com/wp-content/uploads/2021/04/badmash-boy-WhatsApp-DP.jpg"
-                              }
-                            />
-                          </Link>
-                        </Grid>
-                        <Grid item xs={6}>
-                          <Stack direction="column">
-                            <Typography color="primary">Prashant</Typography>
-                            {/* <TextTruncate
-                              line={1}
-                              element="span"
-                              truncateText="…"
-                              text=""
-                            /> */}
-                            <Typography
-                              color="primary"
-                              sx={{ overflow: "hidden" }}
-                            >
-                              Lorem Ipsum is simply
-                            </Typography>
-                          </Stack>
-                        </Grid>
-                        <Grid item xs={3}>
-                          <Stack
-                            alignItems="center"
-                            direction="row"
-                            sx={{ height: "100%" }}
-                          >
-                            <SimpleButton
-                              sx={{
-                                width: "100%",
-                                height: "2.2rem",
-                                paddingLeft: 0,
-                                paddingRight: 0,
-                                backgroundColor: "background.default",
-                              }}
-                            >
-                              Follow
-                            </SimpleButton>
-                          </Stack>
-                        </Grid>
-                      </Grid>
-                    </Paper>
+                <Stack
+                  sx={{
+                    height: "120vh",
+                    [coreThemeObj.breakpoints.only("xs")]: {
+                      overflowX: "scroll",
+                      scrollbarWidth: "none" /* Firefox */,
+                      msOverflowStyle: "none" /* Internet Explorer 10+ */,
+                    },
+                  }}
+                >
+                  {Array.from(Array(20)).map((_, index) => (
+                    <MemberCard key={index} />
                   ))}
                 </Stack>
               </div>
@@ -281,7 +241,6 @@ export default function House() {
                   height: "2.2rem",
                   paddingLeft: 0,
                   paddingRight: 0,
-                  borderColor: "background.default",
                   backgroundColor: "background.default",
                   "&:hover": {
                     backgroundColor: "background.paper",
@@ -299,7 +258,6 @@ export default function House() {
                   paddingLeft: 0,
                   paddingRight: 0,
                   marginLeft: "1rem",
-                  borderColor: "background.default",
                   backgroundColor: "background.default",
                   "&:hover": {
                     backgroundColor: "background.paper",
