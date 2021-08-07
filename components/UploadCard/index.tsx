@@ -12,6 +12,10 @@ import { LinkButton } from "../Button/LinkButton";
 import { CenterText } from "../CenterText";
 import { coreThemeObj } from "../../theme/theme";
 
+interface UploadCardProps {
+  setActiveStep: (page: number) => void;
+}
+
 const useStyles = makeStyles({
   typographyText: {
     [coreThemeObj.breakpoints.only("xs")]: {
@@ -20,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const UploadCard: React.FC = () => {
+export const UploadCard: React.FC<UploadCardProps> = ({ setActiveStep }) => {
   const classes = useStyles();
 
   return (
@@ -61,6 +65,7 @@ export const UploadCard: React.FC = () => {
             },
           }}
           endIcon={<ArrowForward />}
+          onClick={() => setActiveStep(4)}
         >
           Next
         </SimpleButton>
