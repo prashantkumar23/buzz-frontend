@@ -19,6 +19,7 @@ export * from './FollowingCard';
 export * from './HouseCard';
 export * from './MemberCard';
 export * from './ForgotPasswordCard';
+export * from './PasswordCard';
 
 export * from './WelcomeCard';
 export * from './PhoneCard';

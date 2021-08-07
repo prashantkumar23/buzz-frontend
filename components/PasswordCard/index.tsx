@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
+import { InputAdornment } from "@material-ui/core";
 import Stack from "@material-ui/core/Stack";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -11,19 +13,12 @@ import {
 
 import { Base } from "../Base";
 import { SimpleButton } from "../Button/SimpleButton";
+import { SimpleInput } from "../Inputs/SimpleInput";
 import { CenterText } from "../CenterText";
-import { ArrowForward } from "@material-ui/icons";
+import { ArrowForward, Visibility, VisibilityOff } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 import { coreThemeObj } from "../../theme/theme";
-import { SimpleInput } from "../Inputs/SimpleInput";
-
-interface OTPProps {
-  setActiveStep: (page: number) => void;
-}
-
-const schema = yup.object().shape({
-  otp: yup.string().length(6).required(),
-});
+import { IconButton } from "@material-ui/core";
 
 const useStyles = makeStyles({
   typographyText: {
@@ -33,18 +28,32 @@ const useStyles = makeStyles({
   },
 });
 
-export const OTPCard: React.FC<OTPProps> = ({ setActiveStep }) => {
-  // const [otp, setOtp] = useState("");
-  const classes = useStyles();
+const schema = yup.object().shape({
+  password: yup.string().max(20).min(3).required(),
+});
 
-  const onSubmit: SubmitHandler<{ otp: string }> = (data: { otp: string }) => {
-    console.log("otp", data);
-    setActiveStep(2);
+interface PasswordCardProps {
+  setActiveStep: (page: number) => void;
+}
+
+export const PasswordCard: React.FC<PasswordCardProps> = ({
+  setActiveStep,
+}) => {
+  const classes = useStyles();
+  const [toggle, setToggle] = useState({
+    passwordVisibility: "password",
+  });
+
+  const onSubmit: SubmitHandler<{ password: string }> = (data: {
+    password: string;
+  }) => {
+    console.log("password", data);
+    setActiveStep(3);
   };
 
-  const methods = useForm<{ otp: string }>({
+  const methods = useForm<{ password: string }>({
     resolver: yupResolver(schema),
-    defaultValues: { otp: "" },
+    defaultValues: { password: "" },
   });
 
   return (
@@ -53,7 +62,7 @@ export const OTPCard: React.FC<OTPProps> = ({ setActiveStep }) => {
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
             <Typography variant="h6" className={classes.typographyText}>
-              🔒 Enter the code we have just texted you
+              Type a strong password
             </Typography>
           </CenterText>
         </Stack>
@@ -66,40 +75,40 @@ export const OTPCard: React.FC<OTPProps> = ({ setActiveStep }) => {
               sx={{ width: "100%" }}
             >
               <Controller
-                name="otp"
+                name="password"
                 control={methods.control}
                 render={({ field }) => (
                   <SimpleInput
                     {...field}
                     size="small"
-                    // sx={{ textAlign: "center" }}
-                    inputProps={{
-                      maxLength: 6,
-                      style: {
-                        textAlign: "center",
-                        letterSpacing: "1rem",
-                      },
+                    type={toggle.passwordVisibility ? "text" : "password"}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={() => {
+                              if (toggle.passwordVisibility === "password") {
+                                setToggle({ passwordVisibility: "text" });
+                              } else {
+                                setToggle({ passwordVisibility: "password" });
+                              }
+                            }}
+                          >
+                            {toggle.passwordVisibility === "password" && (
+                              <Visibility color="primary" />
+                            )}
+                            {toggle.passwordVisibility === "text" && (
+                              <VisibilityOff color="primary" />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
                     }}
                   />
                 )}
               />
 
-              <SimpleButton
-                disableRipple
-                sx={{
-                  backgroundColor: "transparent",
-                  height: "1rem",
-                  borderColor: "transparent",
-                  margin: 0,
-                  "&:hover": {
-                    backgroundColor: "transparent",
-                  },
-                }}
-              >
-                <Typography variant="caption">
-                  Didn&apos;t receive Tap to resend
-                </Typography>
-              </SimpleButton>
               <SimpleButton
                 disableRipple
                 sx={{

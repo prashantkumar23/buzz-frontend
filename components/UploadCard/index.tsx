@@ -65,7 +65,7 @@ export const UploadCard: React.FC<UploadCardProps> = ({ setActiveStep }) => {
             },
           }}
           endIcon={<ArrowForward />}
-          onClick={() => setActiveStep(4)}
+          onClick={() => setActiveStep(5)}
         >
           Next
         </SimpleButton>

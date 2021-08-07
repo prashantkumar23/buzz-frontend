@@ -47,7 +47,7 @@ export const NameCard: React.FC<NameCardProps> = ({
     fullname: string;
   }) => {
     console.log("fullname", data);
-    setActiveStep(3);
+    setActiveStep(4);
   };
 
   const methods = useForm<{ fullname: string }>({

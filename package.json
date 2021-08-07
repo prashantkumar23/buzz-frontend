@@ -21,7 +21,6 @@
     "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.12.2",
-    "react-otp-input": "^2.4.0",
     "react-phone-number-input": "^3.1.25",
     "react-spring-bottom-sheet": "^3.4.0",
     "smooth-scroll-into-view-if-needed": "^1.1.32",

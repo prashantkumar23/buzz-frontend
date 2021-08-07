@@ -5,6 +5,7 @@ import {
   EmailCard,
   NameCard,
   OTPCard,
+  PasswordCard,
   PhoneCard,
   SimpleButton,
   UploadCard,
@@ -85,17 +86,19 @@ const Join: React.FC = () => {
           {/* Step Two */}
           {activeStep === 1 && <OTPCard setActiveStep={setActiveStep} />}
           {/* Step Three */}
-          {activeStep === 2 && (
+          {activeStep === 2 && <PasswordCard setActiveStep={setActiveStep} />}
+          {/* Step Four */}
+          {activeStep === 3 && (
             <NameCard
               heading="🙃 What's your full name"
               buttonText="Next"
               setActiveStep={setActiveStep}
             />
           )}
-          {/* Step Four */}
-          {activeStep === 3 && <UploadCard setActiveStep={setActiveStep} />}
           {/* Step Five */}
-          {activeStep === 4 && <UsernameCard setActiveStep={setActiveStep} />}
+          {activeStep === 4 && <UploadCard setActiveStep={setActiveStep} />}
+          {/* Step Six */}
+          {activeStep === 5 && <UsernameCard setActiveStep={setActiveStep} />}
         </Stack>
       </CenterPaper>
     </UserFormProvider>
