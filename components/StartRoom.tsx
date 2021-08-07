@@ -235,7 +235,7 @@ export const StartRoom: React.FC<StartRoomProps> = ({
                     },
                   }}
                 >
-                  🎉 Let's Go
+                  🎉 Let&apos;s Go
                 </SimpleButton>
               </Stack>
             </DialogContent>

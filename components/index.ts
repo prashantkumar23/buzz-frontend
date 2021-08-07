@@ -18,10 +18,12 @@ export * from './Snackbar';
 export * from './FollowingCard';
 export * from './HouseCard';
 export * from './MemberCard';
+export * from './ForgotPasswordCard';
 
 export * from './WelcomeCard';
 export * from './PhoneCard';
 export * from './EmailCard';
+export * from './LoginCard';
 export * from './OTPCard';
 export * from './NameCard';
 export * from './UploadCard';

@@ -1,13 +1,13 @@
-import * as React from "react";
+import { makeStyles } from "@material-ui/styles";
 import Typography from "@material-ui/core/Typography";
 import Stack from "@material-ui/core/Stack";
+import "react-phone-number-input/style.css";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
 import { Base } from "../Base";
 import { SimpleButton } from "../Button/SimpleButton";
-import { SimpleInput } from "../Inputs/SimpleInput";
 import { CenterText } from "../CenterText";
-import { ArrowForward } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/styles";
+import { SimpleInput } from "../Inputs/SimpleInput";
 import { coreThemeObj } from "../../theme/theme";
 
 const useStyles = makeStyles({
@@ -16,14 +16,31 @@ const useStyles = makeStyles({
       fontSize: "1.1rem",
     },
   },
+  linkText: {
+    cursor: "pointer",
+  },
+  buttonGroup: {
+    "& 	.MuiToggleButtonGroup-grouped:not(:last-of-type)": {
+      "&.Mui-selected": {
+        backgroundColor: "background.default",
+      },
+      "&:hover": {
+        backgroundColor: "background.default",
+      },
+    },
+    "& .MuiToggleButtonGroup-grouped:not(:first-of-type)": {
+      marginLeft: "0.5rem",
+      "&.Mui-selected": {
+        backgroundColor: "background.paper",
+      },
+      "&:hover": {
+        backgroundColor: "background.default",
+      },
+    },
+  },
 });
 
-interface NameCardProps {
-  heading: string;
-  buttonText: string;
-}
-
-export const NameCard: React.FC<NameCardProps> = ({ heading, buttonText }) => {
+export const ForgotPasswordCard: React.FC = ({}) => {
   const classes = useStyles();
 
   return (
@@ -32,12 +49,15 @@ export const NameCard: React.FC<NameCardProps> = ({ heading, buttonText }) => {
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
             <Typography variant="h6" className={classes.typographyText}>
-              {heading}
+              🙃 Don't worry we'll help you
             </Typography>
           </CenterText>
         </Stack>
-        <SimpleInput size="small" />
-        <Typography variant="caption">People use real name at Juno</Typography>
+        <SimpleInput
+          size="small"
+          placeholder="Enter your email/phone"
+          name="inputOne"
+        />
         <SimpleButton
           disableRipple
           sx={{
@@ -47,9 +67,10 @@ export const NameCard: React.FC<NameCardProps> = ({ heading, buttonText }) => {
               backgroundColor: "background.paper",
             },
           }}
-          endIcon={<ArrowForward />}
+          endIcon={<CheckCircleIcon />}
+          type="submit"
         >
-          {buttonText}
+          Get the OTP
         </SimpleButton>
       </Stack>
     </Base>

@@ -196,7 +196,7 @@ export default function Profile() {
               >
                 <Stack direction="row">
                   {Array.from(Array(20)).map((_, index) => (
-                    <Link href={`/house/${index}`} passHref>
+                    <Link href={`/house/${index}`} passHref key={index}>
                       <Avatar
                         sx={{
                           cursor: "pointer",

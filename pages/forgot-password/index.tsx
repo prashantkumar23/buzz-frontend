@@ -1,10 +1,16 @@
+import { Stack } from "@material-ui/core";
 import * as React from "react";
-import Typography from "@material-ui/core/Typography";
+import { CenterPaper, ForgotPasswordCard } from "../../components";
 
-export default function Join() {
+export default function ForgotPassword() {
   return (
-    <Typography variant="h4" component="h1" gutterBottom>
-      Forgot Password Page
-    </Typography>
+    <CenterPaper>
+      <Stack
+        sx={{ minHeight: "90vh", paddingTop: "15vh", flexGrow: 1 }}
+        alignItems="center"
+      >
+        <ForgotPasswordCard />
+      </Stack>
+    </CenterPaper>
   );
 }

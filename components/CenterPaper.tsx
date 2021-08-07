@@ -6,8 +6,9 @@ export const CenterPaper: React.FC = ({ children }) => {
   return (
     <Paper
       sx={{
-        height: "auto",
+        minHeight: "100vh",
         width: "100%",
+        flexGrow: 1,
       }}
       elevation={0}
     >

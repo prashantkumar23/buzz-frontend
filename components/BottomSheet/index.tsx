@@ -61,7 +61,9 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
         header={
           <Paper elevation={0}>
             <div style={{ cursor: "-moz-grabbing" }}>
-              <Typography variant="h5">What's the best framework?</Typography>
+              <Typography variant="h5">
+                What&apos;s the best framework?
+              </Typography>
             </div>
           </Paper>
         }

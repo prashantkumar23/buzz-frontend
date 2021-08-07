@@ -1,8 +1,10 @@
 import * as React from "react";
+import Script from "next/script";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
+import { coreThemeObj } from "../theme/theme";
 // import theme from "../theme/theme";
 
 function getCache() {
@@ -17,11 +19,16 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
-          {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
+
           <link rel="stylesheet" href="/fonts/font.css" />
+
+          <meta
+            name="theme-color"
+            content={coreThemeObj.palette.primary.main}
+          />
         </Head>
         <body>
-          <script src="noflash.js" />
+          <Script src="noflash.js" />
           <Main />
           <NextScript />
         </body>

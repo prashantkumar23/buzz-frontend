@@ -232,43 +232,6 @@ export default function House() {
             </Stack>
           </Container>
         </Grid>
-        <Grid item xs={12}>
-          <Stack justifyContent="center">
-            <div style={{ padding: "0.5rem" }}>
-              <SimpleButton
-                sx={{
-                  width: "8rem",
-                  height: "2.2rem",
-                  paddingLeft: 0,
-                  paddingRight: 0,
-                  backgroundColor: "background.default",
-                  "&:hover": {
-                    backgroundColor: "background.paper",
-                  },
-                }}
-                // disabled
-                // color="primary"
-              >
-                Prev
-              </SimpleButton>
-              <SimpleButton
-                sx={{
-                  width: "8rem",
-                  height: "2.2rem",
-                  paddingLeft: 0,
-                  paddingRight: 0,
-                  marginLeft: "1rem",
-                  backgroundColor: "background.default",
-                  "&:hover": {
-                    backgroundColor: "background.paper",
-                  },
-                }}
-              >
-                Next
-              </SimpleButton>
-            </div>
-          </Stack>
-        </Grid>
       </Grid>
       <FollowingDialog
         openFollowingDialog={openFollowingDialog}

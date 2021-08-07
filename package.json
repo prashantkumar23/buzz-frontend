@@ -11,9 +11,11 @@
     "@material-ui/styles": "^4.11.4",
     "classnames": "^2.3.1",
     "clsx": "^1.1.1",
+    "framer-motion": "^4.1.17",
     "next": "^11.0.1",
     "next-fonts": "^1.5.1",
     "postcss-custom-properties-fallback": "^1.0.1",
+    "preact": "^10.5.14",
     "react": "^17.0.2",
     "react-animate-on-scroll": "^2.1.5",
     "react-dom": "^17.0.2",
@@ -22,13 +24,13 @@
     "react-phone-number-input": "^3.1.25",
     "react-spring-bottom-sheet": "^3.4.0",
     "smooth-scroll-into-view-if-needed": "^1.1.32",
-    "use-dark-mode": "^2.3.1"
+    "use-dark-mode": "^2.3.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
-
   },
   "devDependencies": {
     "@types/node": "latest",

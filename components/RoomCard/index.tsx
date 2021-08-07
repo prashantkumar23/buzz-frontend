@@ -51,7 +51,7 @@ export const RoomCard: React.FC<RoomCardProps> = ({ roomId }) => {
         <CardHeader
           title={
             <Typography color="primary" sx={{ fontSize: "1.25rem" }}>
-              "AI is boom or good? and what if is only"
+              AI is boom or good? and what if is only
             </Typography>
           }
           subheader={

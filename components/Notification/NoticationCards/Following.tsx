@@ -23,7 +23,7 @@ export const FollowingYou: React.FC = () => {
         <ListItemText
           secondary={
             <React.Fragment>
-              <Link href="/">
+              <Link href="/" passHref>
                 <Typography
                   sx={{ display: "inline", cursor: "pointer" }}
                   component="span"

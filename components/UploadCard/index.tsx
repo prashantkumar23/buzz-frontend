@@ -33,7 +33,7 @@ export const UploadCard: React.FC = () => {
             </Typography>
           </CenterText>
           <Typography sx={{ textAlign: "center", fontSize: "0.7rem" }}>
-            How's this photo?
+            How&apos;s this photo?
           </Typography>
         </Stack>
 

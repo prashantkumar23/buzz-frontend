@@ -66,7 +66,7 @@ export const OTPCard: React.FC = () => {
           }}
         >
           <Typography variant="caption">
-            Didn't receive Tap to resend
+            Didn&apos;t receive Tap to resend
           </Typography>
         </SimpleButton>
         <SimpleButton

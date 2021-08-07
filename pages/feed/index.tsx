@@ -155,6 +155,7 @@ export default function Feed() {
                 justifyContent: "center",
               },
             }}
+            key={index}
           >
             <RoomCard roomId={index} />
           </Grid>

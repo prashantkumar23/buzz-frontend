@@ -4,21 +4,33 @@ import Container from "@material-ui/core/Container";
 import Stack from "@material-ui/core/Stack";
 import Grid from "@material-ui/core/Grid";
 import Avatar from "@material-ui/core/Avatar";
-// import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Instagram from "@material-ui/icons/Instagram";
 import Twitter from "@material-ui/icons/Twitter";
+import EditIcon from "@material-ui/icons/Edit";
+import CheckIcon from "@material-ui/icons/Check";
 
-import { SimpleButton, FollowingDialog, CenterPaper } from "../../components";
+import {
+  SimpleButton,
+  FollowingDialog,
+  CenterPaper,
+  SimpleInput,
+} from "../../components";
 
 export default function MyProfile() {
   const [openFollowingDialog, setOpenFollowingDialog] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   return (
     <CenterPaper>
       <Grid container direction="column" spacing={2} alignItems="center">
-        <Grid item xs={12} sx={{ width: "100%" }}>
-          <Stack direction="row" justifyContent="center">
+        <Grid item xs={12} sx={{}}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{ position: "relative" }}
+          >
             <Avatar
               src={
                 "https://www.imagediamond.com/blog/wp-content/uploads/2020/05/be-happy-images-9.jpg"
@@ -28,6 +40,25 @@ export default function MyProfile() {
                 height: "8rem",
               }}
             />
+            <IconButton
+              sx={{
+                position: "absolute",
+                right: -70,
+              }}
+              onClick={() => setEditing(true)}
+            >
+              {editing ? (
+                <CheckIcon
+                  color="primary"
+                  sx={{ width: "1.3rem", height: "1.3rem" }}
+                />
+              ) : (
+                <EditIcon
+                  color="primary"
+                  sx={{ width: "1.3rem", height: "1.3rem" }}
+                />
+              )}
+            </IconButton>
           </Stack>
         </Grid>
         {/*  Name and Username  */}
@@ -86,54 +117,6 @@ export default function MyProfile() {
             </SimpleButton>
           </Stack>
         </Grid>
-        {/*  Follow button  */}
-        {/* <Grid item xs={12} sx={{ width: "100%" }}>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={1}
-          >
-            <IconButton
-              sx={{
-                backgroundColor: "background.paper",
-              }}
-            >
-              <Telegram
-                sx={{
-                  width: "2rem",
-                  height: "2rem",
-                }}
-                color="primary"
-              />
-            </IconButton>
-            <SimpleButton
-              disableRipple
-              sx={{
-                width: "8rem",
-                height: "2.2rem",
-                paddingLeft: 0,
-                paddingRight: 0,
-                backgroundColor: "background.default",
-              }}
-            >
-              Follow
-            </SimpleButton>
-            <IconButton
-              color="primary"
-              sx={{
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-              }}
-              disableFocusRipple
-              disableRipple
-              disableTouchRipple
-            >
-              <MoreVertIcon />
-            </IconButton>
-          </Stack>
-        </Grid> */}
         {/*  Social Media link  */}
         <Grid item xs={12}>
           <Stack
@@ -166,18 +149,50 @@ export default function MyProfile() {
         {/*  BIO  */}
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Container maxWidth="sm">
-            <Typography color="primary">
+            {editing ? (
+              <SimpleInput
+                // sx={{
+                //   borderColor: "gold",
+                //   backgroundColor: "gold",
+                // }}
+                InputProps={{
+                  sx: {
+                    textAlign: "right",
+                  },
+                }}
+                multiline
+                minRows={10}
+                type="text"
+                spellCheck="false"
+                fullWidth
+                defaultValue={`
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
-              ab minus aperiam maxime, animi voluptatem, impedit ut, ullam eaque
-              veniam saepe. Perspiciatis quae possimus deleniti eum tenetur
-              accusamus earum sunt! Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Excepturi autem dicta rem! Eos, iure laboriosam.
-              Nobis eligendi omnis repellat at tenetur voluptatem debitis quos
-              voluptas, placeat blanditiis eaque quisquam molestias. Lorem ipsum
-              dolor sit amet consectetur adipisicing elit. Vero ex neque, iste
-              autem deleniti dignissimos, atque illum et beatae cumque veritatis
-              soluta sunt aliquid nihil veniam facere. At, sunt debitis.
-            </Typography>
+              ab minus aperiam maxime, animi voluptatem, impedit ut, ullam
+              eaque veniam saepe. Perspiciatis quae possimus deleniti eum
+              tenetur accusamus earum sunt! Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Excepturi autem dicta rem! Eos,
+              iure laboriosam. Nobis eligendi omnis repellat at tenetur
+              voluptatem debitis quos voluptas, placeat blanditiis eaque
+              quisquam molestias. Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Vero ex neque, iste autem deleniti
+              dignissimos, atque illum et beatae cumque veritatis soluta sunt
+              aliquid nihil veniam facere. At, sunt debitis.`}
+              />
+            ) : (
+              <Typography color="primary">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+                ab minus aperiam maxime, animi voluptatem, impedit ut, ullam
+                eaque veniam saepe. Perspiciatis quae possimus deleniti eum
+                tenetur accusamus earum sunt! Lorem ipsum dolor sit amet
+                consectetur adipisicing elit. Excepturi autem dicta rem! Eos,
+                iure laboriosam. Nobis eligendi omnis repellat at tenetur
+                voluptatem debitis quos voluptas, placeat blanditiis eaque
+                quisquam molestias. Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Vero ex neque, iste autem deleniti
+                dignissimos, atque illum et beatae cumque veritatis soluta sunt
+                aliquid nihil veniam facere. At, sunt debitis.
+              </Typography>
+            )}
           </Container>
         </Grid>
         {/* Memeber Links */}
@@ -194,7 +209,7 @@ export default function MyProfile() {
               >
                 <Stack direction="row">
                   {Array.from(Array(20)).map((_, index) => (
-                    <Link href={`/house/${index}`} passHref>
+                    <Link href={`/house/${index}`} passHref key={index}>
                       <Avatar
                         sx={{
                           cursor: "pointer",

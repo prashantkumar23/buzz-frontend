@@ -3,8 +3,17 @@ import Typography from "@material-ui/core/Typography";
 
 export const AppName = () => {
   return (
-    <Link href="/">
-      <Typography variant="h3" sx={{ cursor: "pointer" }} color="primary">
+    <Link href="/" passHref>
+      <Typography
+        variant="h3"
+        sx={{
+          position: "absolute",
+          paddingBottom: 0,
+          cursor: "pointer",
+          fontWeight: "bold",
+        }}
+        color="primary"
+      >
         Juno
       </Typography>
     </Link>
