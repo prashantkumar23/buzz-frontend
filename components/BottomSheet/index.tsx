@@ -55,7 +55,7 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
         defaultSnap={({ maxHeight }) => maxHeight}
         snapPoints={({ maxHeight }) => [
           maxHeight - maxHeight / 12,
-          maxHeight / 9,
+          maxHeight / 5,
           maxHeight * 0.6,
         ]}
         header={
@@ -72,56 +72,53 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                 <Stack
                   direction="row"
                   spacing={2}
-                  justifyContent="space-between"
+                  justifyContent="flex-start"
                   alignItems="center"
                 >
                   <Typography variant="h6" sx={{ fontWeight: "bold" }}>
                     What's the best framework to learn
                   </Typography>
-                  <div>
-                    <SimpleButton
-                      sx={{
-                        backgroundColor: "background.default",
-                        borderRadius: "60%",
-                        height: "100%",
-                        width: "2rem",
-                      }}
-                      onClick={handleCloseBottomSheet}
-                    >
-                      ✋
-                    </SimpleButton>
-                    <SimpleButton
-                      onClick={handleCloseBottomSheet}
-                      sx={{
-                        backgroundColor: "background.default",
-                        marginLeft: "1rem",
-                      }}
-                    >
-                      Leave quitely ✌️
-                    </SimpleButton>
-                  </div>
                 </Stack>
               </Grid>
             </Grid>
           </Paper>
         }
         footer={
-          <Paper elevation={0} sx={{ margin: 0, height: "100%" }}>
-            {/* <Grid container sx={{ width: "100%", cursor: "-moz-grabbing" }}>
+          <Paper elevation={0} sx={{ margin: 0 }}>
+            <Grid container sx={{ width: "100%", cursor: "-moz-grabbing" }}>
               <Grid item xs={12}>
-                <Stack direction="row" spacing={2} justifyContent="flex-end">
-                  <SimpleButton sx={{ backgroundColor: "background.default" }}>
-                    <span>✋</span>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="flex-end"
+                  alignItems="center"
+                >
+                  <SimpleButton
+                    sx={{
+                      backgroundColor: "background.default",
+                      borderRadius: "60%",
+                      height: "100%",
+                      width: "2rem",
+                    }}
+                    onClick={handleCloseBottomSheet}
+                  >
+                    ✋
                   </SimpleButton>
                   <SimpleButton
                     onClick={handleCloseBottomSheet}
-                    sx={{ backgroundColor: "background.default" }}
+                    sx={{
+                      backgroundColor: "background.default",
+                      marginLeft: "1rem",
+                      borderRadius: "60%",
+                      height: "100%",
+                      width: "2rem",
+                    }}
                   >
-                    Leave quitely <span>✌️</span>
+                    ✌️
                   </SimpleButton>
                 </Stack>
               </Grid>
-            </Grid> */}
+            </Grid>
           </Paper>
         }
         // onSpringStart={async (event) => {
