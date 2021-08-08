@@ -1,7 +1,9 @@
-import { Paper, Grid, Avatar, Stack, Typography } from "@material-ui/core";
+import { Paper, Grid, Stack, Typography } from "@material-ui/core";
 import Link from "next/link";
 import { SimpleButton } from "..";
 import { coreThemeObj } from "../../theme/theme";
+import { AvatarImage } from "../AvatarImage";
+import catImage from "../../public/images/cat.jpg";
 
 export const FollowingCard: React.FC = () => {
   return (
@@ -24,18 +26,7 @@ export const FollowingCard: React.FC = () => {
     >
       <Grid container>
         <Grid item xs={3} sm={2}>
-          <Link href="/profile/prashant" passHref>
-            <Avatar
-              sx={{
-                cursor: "pointer",
-                width: "3rem",
-                height: "3rem",
-              }}
-              src={
-                "https://as2.ftcdn.net/jpg/03/33/41/39/500_F_333413930_c2GjjOCNl0TtbAQDX6VIlKfcBdHEbya3.jpg"
-              }
-            />
-          </Link>
+          <AvatarImage link={"/"} image={catImage} />
         </Grid>
         <Grid item xs={5} sm={8}>
           <Stack direction="column" sx={{ cursor: "pointer" }}>

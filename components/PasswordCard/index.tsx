@@ -101,6 +101,7 @@ export const PasswordCard: React.FC<PasswordCardProps> = ({
                             {toggle.passwordVisibility === "text" && (
                               <VisibilityOff color="primary" />
                             )}
+                            {console.log(toggle.passwordVisibility)}
                           </IconButton>
                         </InputAdornment>
                       ),

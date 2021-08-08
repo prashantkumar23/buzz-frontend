@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Link from "next/link";
+import Image from "next/image";
 import Container from "@material-ui/core/Container";
 import Stack from "@material-ui/core/Stack";
 import Grid from "@material-ui/core/Grid";
@@ -11,7 +11,13 @@ import Instagram from "@material-ui/icons/Instagram";
 import Telegram from "@material-ui/icons/Telegram";
 import Twitter from "@material-ui/icons/Twitter";
 
-import { SimpleButton, FollowingDialog, CenterPaper } from "../../components";
+import {
+  SimpleButton,
+  FollowingDialog,
+  CenterPaper,
+  AvatarImage,
+} from "../../components";
+import catImage from "../../public/images/cat.jpg";
 
 export default function Profile() {
   const [openFollowingDialog, setOpenFollowingDialog] = useState(false);
@@ -22,14 +28,13 @@ export default function Profile() {
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Stack direction="row" justifyContent="center">
             <Avatar
-              src={
-                "https://www.imagediamond.com/blog/wp-content/uploads/2020/05/be-happy-images-9.jpg"
-              }
               sx={{
                 width: "8rem",
                 height: "8rem",
               }}
-            />
+            >
+              <Image src={catImage} />
+            </Avatar>
           </Stack>
         </Grid>
         {/*  Name and Username  */}
@@ -194,19 +199,9 @@ export default function Profile() {
                   overflowY: "hidden",
                 }}
               >
-                <Stack direction="row">
+                <Stack direction="row" spacing={2}>
                   {Array.from(Array(20)).map((_, index) => (
-                    <Link href={`/house/${index}`} passHref key={index}>
-                      <Avatar
-                        sx={{
-                          cursor: "pointer",
-                          margin: "0.5rem",
-                        }}
-                        src={
-                          "https://wiki.melvoridle.com/images/2/2c/Finn%2C_the_Cat_%28pet%29.png"
-                        }
-                      />
-                    </Link>
+                    <AvatarImage link={`/`} image={catImage} key={index} />
                   ))}
                 </Stack>
               </div>

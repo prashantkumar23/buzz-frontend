@@ -1,7 +1,10 @@
-import { Paper, Grid, Avatar, Stack, Typography } from "@material-ui/core";
+import { Paper, Grid, Stack, Typography } from "@material-ui/core";
 import Link from "next/link";
+
 import { SimpleButton } from "..";
 import { coreThemeObj } from "../../theme/theme";
+import catImage from "../../public/images/cat.jpg";
+import { AvatarImage } from "../AvatarImage";
 
 export const MemberCard: React.FC = () => {
   return (
@@ -16,28 +19,12 @@ export const MemberCard: React.FC = () => {
         width: "100%",
         borderRadius: "0.75rem",
         backgroundColor: "background.default",
-        // [coreThemeObj.breakpoints?.only("xs")]: {
-        //   width: "15rem",
-        // },
       }}
       variant="outlined"
     >
       <Grid container>
         <Grid item xs={3} sm={2}>
-          {/* <Stack flexDirection="row" justifyContent="center"> */}
-          <Link href="/profile/prashant" passHref>
-            <Avatar
-              sx={{
-                cursor: "pointer",
-                width: "3rem",
-                height: "3rem",
-              }}
-              src={
-                "https://as2.ftcdn.net/jpg/03/33/41/39/500_F_333413930_c2GjjOCNl0TtbAQDX6VIlKfcBdHEbya3.jpg"
-              }
-            />
-          </Link>
-          {/* </Stack> */}
+          <AvatarImage link={`/profile/prashant`} image={catImage} />
         </Grid>
         <Grid item xs={5} sm={8}>
           <Stack

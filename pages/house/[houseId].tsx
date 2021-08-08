@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import Box from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import Typography from "@material-ui/core/Typography";
@@ -20,6 +21,7 @@ import {
   MemberCard,
 } from "../../components";
 import { coreThemeObj } from "../../theme/theme";
+import catImage from "../../public/images/cat.jpg";
 
 export default function House() {
   const [openRuleDialog, setOpenRuleDialog] = useState(false);
@@ -31,14 +33,13 @@ export default function House() {
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Stack direction="row" justifyContent="center">
             <Avatar
-              src={
-                "https://www.imagediamond.com/blog/wp-content/uploads/2020/05/be-happy-images-9.jpg"
-              }
               sx={{
                 width: "8rem",
                 height: "8rem",
               }}
-            />
+            >
+              <Image src={catImage} />
+            </Avatar>
           </Stack>
         </Grid>
         {/*  Name  */}
@@ -134,10 +135,10 @@ export default function House() {
         {/*  About  */}
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Container maxWidth="sm">
-            <Typography variant="h5" color="primary" gutterBottom>
+            <Typography variant="caption" color="primary" gutterBottom>
               About
             </Typography>
-            <Typography color="primary">
+            <Typography color="primary" sx={{ marginTop: "1rem" }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
               nisi culpa tenetur obcaecati sed temporibus est unde quis nobis,
               rem, earum aliquid vel quibusdam cupiditate quasi laborum,
@@ -156,6 +157,7 @@ export default function House() {
             </Typography>
           </Container>
         </Grid>
+
         <Grid item xs={12} sx={{ width: "100%" }}>
           <Container maxWidth="sm">
             <Stack direction="column">

@@ -91,8 +91,8 @@ export default function Feed() {
                 },
                 backgroundColor: "background.default",
               }}
-              // onClick={() => setStartRoom(true)}
-              onClick={() => setBottomSheet(true)}
+              onClick={() => setStartRoom(true)}
+              // onClick={() => setBottomSheet(true)}
               disableFocusRipple
               disableRipple
               disableTouchRipple
