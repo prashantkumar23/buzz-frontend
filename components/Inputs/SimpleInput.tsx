@@ -10,4 +10,10 @@ export const SimpleInput = styled(InputBase)<InputBaseProps>({
   "& input::placeholder": {
     fontFamily: "GTMaru",
   },
+  "&&:before": {
+    borderBottom: "none",
+  },
+  "&&:after": {
+    borderBottom: "none",
+  },
 });

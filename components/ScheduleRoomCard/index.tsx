@@ -11,22 +11,42 @@ import ListItemButton from "@material-ui/core/ListItemButton";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
 import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
-import MobileDatePicker from "@material-ui/lab/MobileDatePicker";
-import MobileTimePicker from "@material-ui/lab/MobileTimePicker";
-import { Typography } from "@material-ui/core";
+import MobileDateTimePicker from "@material-ui/lab/MobileDateTimePicker";
+import { TextField, Typography } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import Checkbox from "@material-ui/core/Checkbox";
 import Autocomplete from "@material-ui/core/Autocomplete";
-import CheckBoxOutlineBlankIcon from "@material-ui/icons/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import RadioButtonCheckedRoundedIcon from "@material-ui/icons/RadioButtonCheckedRounded";
+import EventAvailableRoundedIcon from "@material-ui/icons/EventAvailableRounded";
+// import { makeStyles } from "@material-ui/styles";
 
-import { SimpleButton } from "../Button/SimpleButton";
 import { SimpleInput } from "../Inputs/SimpleInput";
 import { AvatarImage } from "../AvatarImage";
 import catImage from "../../public/images/cat.jpg";
 
-const icon = <CheckBoxOutlineBlankIcon fontSize="small" color="primary" />;
-const checkedIcon = <CheckBoxIcon fontSize="small" color="primary" />;
+const icon = <RadioButtonUncheckedIcon fontSize="small" color="primary" />;
+const checkedIcon = (
+  <RadioButtonCheckedRoundedIcon fontSize="small" color="primary" />
+);
+
+// const useStyles = makeStyles({
+//   underline: {
+//     "&&&:before": {
+//       borderBottom: "none",
+//     },
+//     "&&:after": {
+//       borderBottom: "none",
+//     },
+//   },
+//   placeholder: {
+//     "&::placeholder": {
+//       textOverflow: "ellipsis !important",
+//       color: "blue",
+//       fontSize: 14,
+//     },
+//   },
+// });
 
 interface ScheduleRoomProps {
   openScheduleRoom: boolean;
@@ -37,10 +57,10 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
   openScheduleRoom,
   handleCloseScheduleRoom,
 }) => {
-  const [date, setDate] = useState<Date | null>(new Date());
-  const [time, setTime] = useState<Date | null>(
+  const [timeDate, setTimeDate] = useState<Date | null>(
     new Date("2018-01-01T00:00:00.000Z")
   );
+  // const classes = useStyles();
 
   return (
     <Dialog
@@ -79,16 +99,9 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
                 <CloseIcon color="primary" />
               </IconButton>
               <Typography sx={{ textAlign: "center" }}>New Event</Typography>
-              <SimpleButton
-                sx={{
-                  width: "6rem",
-                  height: "2.4rem",
-
-                  backgroundColor: "background.default",
-                }}
-              >
-                Publish
-              </SimpleButton>
+              <IconButton onClick={handleCloseScheduleRoom}>
+                <EventAvailableRoundedIcon color="primary" />
+              </IconButton>
             </Stack>
           </DialogContent>
         </Grid>
@@ -132,9 +145,10 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
                   </li>
                 )}
                 renderInput={(params) => (
-                  <SimpleInput
+                  <TextField
                     {...params}
                     fullWidth
+                    variant="outlined"
                     placeholder="Add a Co-host or Guest"
                   />
                 )}
@@ -147,27 +161,17 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
         <Grid item xs={12}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <ListItem>
-              <MobileDatePicker
-                value={date}
+              <MobileDateTimePicker
+                value={timeDate}
                 onChange={(newValue) => {
-                  setDate(newValue);
+                  setTimeDate(newValue);
                 }}
                 renderInput={(params) => (
                   //@ts-ignore
-                  <SimpleInput {...params} size="small" fullWidth />
+                  <SimpleInput {...params} />
                 )}
-              />
-            </ListItem>
-            <ListItem>
-              <MobileTimePicker
-                value={time}
-                onChange={(newValue) => {
-                  setTime(newValue);
-                }}
-                renderInput={(params) => (
-                  //@ts-ignore
-                  <SimpleInput {...params} size="small" fullWidth />
-                )}
+                onError={console.log}
+                minDate={new Date()}
               />
             </ListItem>
           </LocalizationProvider>

@@ -16,13 +16,11 @@ import {
   FollowingDialog,
   CenterPaper,
   SimpleInput,
-  ScheduleRoomCard,
 } from "../../components";
 
 export default function MyProfile() {
   const [openFollowingDialog, setOpenFollowingDialog] = useState(false);
   const [editing, setEditing] = useState(false);
-  const [openScheduleDialog, setOpenScheduleDialog] = useState(false);
 
   return (
     <CenterPaper>
@@ -118,11 +116,6 @@ export default function MyProfile() {
               3k following
             </SimpleButton>
           </Stack>
-        </Grid>
-        <Grid item xs={12}>
-          <SimpleButton onClick={() => setOpenScheduleDialog(true)}>
-            Schedule
-          </SimpleButton>
         </Grid>
         {/*  Social Media link  */}
         <Grid item xs={12}>
@@ -228,10 +221,6 @@ export default function MyProfile() {
       <FollowingDialog
         openFollowingDialog={openFollowingDialog}
         handleCloseFollowingDialog={() => setOpenFollowingDialog(false)}
-      />
-      <ScheduleRoomCard
-        openScheduleRoom={openScheduleDialog}
-        handleCloseScheduleRoom={() => setOpenScheduleDialog(false)}
       />
     </CenterPaper>
   );
