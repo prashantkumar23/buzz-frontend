@@ -4,7 +4,6 @@ export * from './Button/LinkButton';
 export * from './AppName';
 export * from './Base';
 export * from './Emoji';
-export * from './Inputs/PhoneInput';
 export * from './Button/UplaodButton';
 export * from './Item';
 export * from './CenterText';
@@ -22,7 +21,6 @@ export * from './PasswordCard';
 export * from './AvatarImage';
 export * from './ScheduleRoomCard';
 
-export * from './WelcomeCard';
 export * from './PhoneCard';
 export * from './EmailCard';
 export * from './LoginCard';

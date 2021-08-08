@@ -98,16 +98,7 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
         <Grid item xs={12}>
           <List>
             <ListItem>
-              <SimpleInput
-                size="small"
-                placeholder="Event Name"
-                fullWidth
-                InputProps={{
-                  sx: {
-                    outline: "none",
-                  },
-                }}
-              />
+              <SimpleInput size="small" placeholder="Event Name" fullWidth />
             </ListItem>
 
             <ListItem>
@@ -162,6 +153,7 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
                   setDate(newValue);
                 }}
                 renderInput={(params) => (
+                  //@ts-ignore
                   <SimpleInput {...params} size="small" fullWidth />
                 )}
               />
@@ -173,6 +165,7 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
                   setTime(newValue);
                 }}
                 renderInput={(params) => (
+                  //@ts-ignore
                   <SimpleInput {...params} size="small" fullWidth />
                 )}
               />

@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import { InputAdornment } from "@material-ui/core";
 import Stack from "@material-ui/core/Stack";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -15,10 +13,9 @@ import { Base } from "../Base";
 import { SimpleButton } from "../Button/SimpleButton";
 import { SimpleInput } from "../Inputs/SimpleInput";
 import { CenterText } from "../CenterText";
-import { ArrowForward, Visibility, VisibilityOff } from "@material-ui/icons";
+import { ArrowForward } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 import { coreThemeObj } from "../../theme/theme";
-import { IconButton } from "@material-ui/core";
 
 const useStyles = makeStyles({
   typographyText: {
@@ -40,9 +37,6 @@ export const PasswordCard: React.FC<PasswordCardProps> = ({
   setActiveStep,
 }) => {
   const classes = useStyles();
-  const [toggle, setToggle] = useState({
-    passwordVisibility: "password",
-  });
 
   const onSubmit: SubmitHandler<{ password: string }> = (data: {
     password: string;
@@ -81,31 +75,8 @@ export const PasswordCard: React.FC<PasswordCardProps> = ({
                   <SimpleInput
                     {...field}
                     size="small"
-                    type={toggle.passwordVisibility ? "text" : "password"}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={() => {
-                              if (toggle.passwordVisibility === "password") {
-                                setToggle({ passwordVisibility: "text" });
-                              } else {
-                                setToggle({ passwordVisibility: "password" });
-                              }
-                            }}
-                          >
-                            {toggle.passwordVisibility === "password" && (
-                              <Visibility color="primary" />
-                            )}
-                            {toggle.passwordVisibility === "text" && (
-                              <VisibilityOff color="primary" />
-                            )}
-                            {console.log(toggle.passwordVisibility)}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
+                    type="password"
+                    placeholder="Something strong..."
                   />
                 )}
               />

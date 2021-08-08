@@ -1,9 +1,7 @@
 import * as React from "react";
 import Typography from "@material-ui/core/Typography";
 import Stack from "@material-ui/core/Stack";
-import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import CheckIcon from "@material-ui/icons/Check";
-import { InputAdornment } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -77,18 +75,7 @@ export const UsernameCard: React.FC<UsernameCardProps> = ({
                 name="username"
                 control={methods.control}
                 render={({ field }) => (
-                  <SimpleInput
-                    {...field}
-                    placeholder="Pick your username"
-                    size="small"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <AlternateEmailIcon color="primary" />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
+                  <SimpleInput {...field} placeholder="@" size="small" />
                 )}
               />
 

@@ -158,15 +158,6 @@ export default function MyProfile() {
           <Container maxWidth="sm">
             {editing ? (
               <SimpleInput
-                // sx={{
-                //   borderColor: "gold",
-                //   backgroundColor: "gold",
-                // }}
-                InputProps={{
-                  sx: {
-                    textAlign: "right",
-                  },
-                }}
                 multiline
                 minRows={10}
                 type="text"

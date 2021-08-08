@@ -61,10 +61,7 @@ export default function Feed() {
               <div>
                 <SimpleInput
                   size="small"
-                  placeholder="Search people and rooms"
-                  InputProps={{
-                    classes: {},
-                  }}
+                  placeholder="Search people/rooms"
                   sx={{
                     [coreThemeObj.breakpoints.only("xs")]: {
                       width: "100%",
@@ -73,7 +70,7 @@ export default function Feed() {
                     "& .MuiInputBase-input": {
                       transition: coreThemeObj.transitions.create("width"),
                       [coreThemeObj.breakpoints.up("md")]: {
-                        width: "12rem",
+                        width: "16rem",
                         "&:focus": {
                           width: "22rem",
                         },

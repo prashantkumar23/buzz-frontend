@@ -60,7 +60,7 @@ export const EmailCard: React.FC<EmailCardProps> = ({ setActiveStep }) => {
                   name="email"
                   control={methods.control}
                   render={({ field }) => (
-                    <SimpleInput {...field} size="small" />
+                    <SimpleInput {...field} size="small" placeholder="..." />
                   )}
                 />
 
