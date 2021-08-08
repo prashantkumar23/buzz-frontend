@@ -18,6 +18,7 @@ import { FollowingYou } from "../Notification/NoticationCards/Following";
 import { Invite } from "../Notification/NoticationCards/Invite";
 import { coreThemeObj } from "../../theme/theme";
 import { ScheduleRoomCard } from "../ScheduleRoomCard";
+import { StartRoom } from "../StartRoom";
 
 interface JunoAppBarProps {}
 
@@ -26,6 +27,7 @@ export const JunoAppBar: React.FC<JunoAppBarProps> = ({}) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<HTMLButtonElement>(null);
   const [openScheduleDialog, setOpenScheduleDialog] = useState(false);
+  const [openStartRoom, setStartRoom] = useState(false);
 
   const openMenu = Boolean(anchorMenuEl);
   const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -115,6 +117,17 @@ export const JunoAppBar: React.FC<JunoAppBarProps> = ({}) => {
           Logout
         </MenuItem>
       </Link>
+      <MenuItem
+        sx={{
+          "&:hover": {
+            backgroundColor: "background.paper",
+          },
+        }}
+        onClick={() => setStartRoom(true)}
+      >
+        <Emoji symbol={"🥱"} />
+        Start a Room
+      </MenuItem>
       <MenuItem
         sx={{
           "&:hover": {
@@ -271,6 +284,10 @@ export const JunoAppBar: React.FC<JunoAppBarProps> = ({}) => {
       <ScheduleRoomCard
         openScheduleRoom={openScheduleDialog}
         handleCloseScheduleRoom={() => setOpenScheduleDialog(false)}
+      />
+      <StartRoom
+        openStartRoom={openStartRoom}
+        handleCloseStartRoom={() => setStartRoom(false)}
       />
     </Box>
   );

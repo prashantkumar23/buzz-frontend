@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { AlertColor, Divider, Typography } from "@material-ui/core";
-import Fab from "@material-ui/core/Fab";
 import Grid from "@material-ui/core/Grid";
 import Stack from "@material-ui/core/Stack";
 import "react-spring-bottom-sheet/dist/style.css";
@@ -9,16 +8,14 @@ import {
   CenterPaper,
   CustomBottomSheet,
   RoomCard,
-  StartRoom,
   SimpleInput,
-  SimpleButton,
   CustomSnackBar,
 } from "../../components";
 import { coreThemeObj } from "../../theme/theme";
 
 export default function Feed() {
   const [openBottomSheet, setBottomSheet] = useState(false);
-  const [openStartRoom, setStartRoom] = useState(false);
+
   const [notify, setNotify] = useState<{
     isOpen: boolean;
     message: string;
@@ -81,56 +78,7 @@ export default function Feed() {
               </div>
             </Stack>
 
-            <SimpleButton
-              sx={{
-                [coreThemeObj.breakpoints.only("xs")]: {
-                  display: "none",
-                },
-                backgroundColor: "background.default",
-              }}
-              // onClick={() => setStartRoom(true)}
-              onClick={() => setBottomSheet(true)}
-              disableFocusRipple
-              disableRipple
-              disableTouchRipple
-              disableElevation
-            >
-              😎 Start a room
-            </SimpleButton>
-
-            <Fab
-              variant="extended"
-              disableRipple
-              disableTouchRipple
-              disableFocusRipple
-              sx={{
-                bottom: 16,
-                position: "fixed",
-                left: 0,
-                right: 0,
-                margin: "0 auto",
-                zIndex: 100,
-                backgroundColor: "background.paper",
-                "&:hover": {
-                  backgroundColor: "background.default",
-                },
-                fontSize: "1rem",
-                padding: "0.75rem 1.75rem",
-                borderRadius: ".75rem",
-                borderWidth: ".075rem",
-                borderStyle: "solid",
-                borderColor: "background.default",
-                textTransform: "none",
-                fontFamily: "sans-serif",
-                [coreThemeObj.breakpoints.between("sm", "xl")]: {
-                  visibility: "hidden",
-                },
-              }}
-              onClick={() => setBottomSheet(true)}
-              // onClick={() => setStartRoom(true)}
-            >
-              <Typography color="primary">Start a room 😎</Typography>
-            </Fab>
+            <button onClick={() => setBottomSheet(true)}>+</button>
           </Stack>
         </Grid>
 
@@ -160,10 +108,6 @@ export default function Feed() {
       <CustomBottomSheet
         openBottomSheet={openBottomSheet}
         handleCloseBottomSheet={() => setBottomSheet(false)}
-      />
-      <StartRoom
-        openStartRoom={openStartRoom}
-        handleCloseStartRoom={() => setStartRoom(false)}
       />
       <CustomSnackBar notify={notify} setNotify={setNotify} />
     </CenterPaper>
