@@ -88,8 +88,8 @@ export default function Feed() {
                 },
                 backgroundColor: "background.default",
               }}
-              onClick={() => setStartRoom(true)}
-              // onClick={() => setBottomSheet(true)}
+              // onClick={() => setStartRoom(true)}
+              onClick={() => setBottomSheet(true)}
               disableFocusRipple
               disableRipple
               disableTouchRipple
@@ -110,10 +110,10 @@ export default function Feed() {
                 right: 0,
                 margin: "0 auto",
                 zIndex: 100,
-                backgroundColor: "background.default",
-                // "&:hover": {
-                //   backgroundColor: "background.paper",
-                // },
+                backgroundColor: "background.paper",
+                "&:hover": {
+                  backgroundColor: "background.default",
+                },
                 fontSize: "1rem",
                 padding: "0.75rem 1.75rem",
                 borderRadius: ".75rem",
@@ -121,10 +121,9 @@ export default function Feed() {
                 borderStyle: "solid",
                 borderColor: "background.default",
                 textTransform: "none",
-                // boxShadow: "none",
                 fontFamily: "sans-serif",
                 [coreThemeObj.breakpoints.between("sm", "xl")]: {
-                  display: "none",
+                  visibility: "hidden",
                 },
               }}
               // onClick={() => setBottomSheet(true)}

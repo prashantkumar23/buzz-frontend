@@ -2,14 +2,20 @@ import React from "react";
 import Stack from "@material-ui/core/Stack";
 import TelegramIcon from "@material-ui/icons/Telegram";
 import CloseIcon from "@material-ui/icons/Close";
-import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Container from "@material-ui/core/Container";
-import { Grid, Dialog, DialogContent, IconButton } from "@material-ui/core";
+import {
+  Grid,
+  Dialog,
+  DialogContent,
+  IconButton,
+  Avatar,
+} from "@material-ui/core";
 
 import { SimpleButton } from "../Button/SimpleButton";
 import { coreThemeObj } from "../../theme/theme";
+import { Transition } from "../Transition";
 
 interface ProfileInfoProps {
   openProfileInfo: boolean;
@@ -20,16 +26,6 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({
   openProfileInfo,
   handleCloseProfileInfo,
 }) => {
-  // const [open, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   return (
     <Container sx={{ paddingBottom: 0, paddingTop: 0 }}>
       <SimpleButton onClick={handleCloseProfileInfo}>Open</SimpleButton>
@@ -43,6 +39,7 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({
             borderRadius: "0.75rem",
           },
         }}
+        TransitionComponent={Transition}
       >
         <Grid
           container
@@ -62,34 +59,38 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({
               }}
             >
               <IconButton onClick={handleCloseProfileInfo}>
-                <CloseIcon />
+                <CloseIcon color="primary" />
               </IconButton>
             </DialogContent>
           </Grid>
 
-          <Grid item xs={12} sm={4}>
-            <Stack
-              direction="row"
-              // justifyContent="center"
-              // alignItems="center"
-              // sx={{ backgroundColor: "gainsboro" }}
+          <Grid item xs={12} sm={6}>
+            <DialogContent
+              sx={{
+                [coreThemeObj.breakpoints.only("xs")]: {
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  paddingTop: 0,
+                  paddingBottom: ".3rem",
+                  width: "100%",
+                  height: "1005",
+                },
+              }}
             >
-              <DialogContent
+              <Avatar
+                src={
+                  "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=49ed3252c0b2ffb49cf8b508892e452d"
+                }
                 sx={{
-                  [coreThemeObj.breakpoints.only("xs")]: {
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    paddingTop: 0,
-                    paddingBottom: ".3rem",
-                  },
+                  width: "6rem",
+                  height: "6rem",
                 }}
-              >
-                <Avatar sx={{ width: "5rem", height: "5rem" }}>J</Avatar>
-              </DialogContent>
-            </Stack>
+              />
+            </DialogContent>
           </Grid>
-          <Grid item xs={12} sm={8}>
+
+          <Grid item xs={12} sm={6}>
             <DialogContent
               sx={{
                 paddingBottom: 0,
@@ -135,35 +136,31 @@ export const ProfileInfo: React.FC<ProfileInfoProps> = ({
                       textAlign: "center",
                     },
                   }}
+                  gutterBottom
                 >
                   @prashantjdrew
                 </Typography>
-                <DialogContent
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "flex-end",
-                    paddingRight: 0,
-                  }}
+                <Stack
+                  direction="row"
+                  spacing={0}
+                  justifyContent="flex-end"
+                  alignItems="center"
                 >
-                  <Stack direction="row" spacing={2}>
-                    <IconButton sx={{ backgroundColor: "floralwhite" }}>
-                      <TelegramIcon />
-                    </IconButton>
-                    <SimpleButton
-                      sx={{
-                        width: "6rem",
-                        height: "2.2rem",
-                        paddingLeft: "1rem",
-                      }}
-                    >
-                      Follow
-                    </SimpleButton>
-                    <IconButton sx={{ backgroundColor: "floralwhite" }}>
-                      <MoreVertIcon />
-                    </IconButton>
-                  </Stack>
-                </DialogContent>
+                  <IconButton>
+                    <TelegramIcon color="primary" />
+                  </IconButton>
+                  <SimpleButton
+                    sx={{
+                      width: "6rem",
+                      height: "2rem",
+                    }}
+                  >
+                    Follow
+                  </SimpleButton>
+                  <IconButton>
+                    <MoreVertIcon color="primary" />
+                  </IconButton>
+                </Stack>
               </Stack>
             </DialogContent>
           </Grid>
