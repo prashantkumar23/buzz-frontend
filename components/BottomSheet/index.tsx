@@ -55,21 +55,59 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
         defaultSnap={({ maxHeight }) => maxHeight}
         snapPoints={({ maxHeight }) => [
           maxHeight - maxHeight / 12,
-          maxHeight / 5,
+          maxHeight / 9,
           maxHeight * 0.6,
         ]}
         header={
-          <Paper elevation={0}>
-            <div style={{ cursor: "-moz-grabbing" }}>
-              <Typography variant="h5">
-                What&apos;s the best framework?
-              </Typography>
-            </div>
+          // <Paper elevation={0}>
+          //   <div style={{ cursor: "-moz-grabbing" }}>
+          //     <Typography variant="h5">
+          //       What&apos;s the best framework?
+          //     </Typography>
+          //   </div>
+          // </Paper>
+          <Paper elevation={0} sx={{ margin: 0 }}>
+            <Grid container sx={{ width: "100%", cursor: "-moz-grabbing" }}>
+              <Grid item xs={12}>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    What's the best framework to learn
+                  </Typography>
+                  <div>
+                    <SimpleButton
+                      sx={{
+                        backgroundColor: "background.default",
+                        borderRadius: "60%",
+                        height: "100%",
+                        width: "2rem",
+                      }}
+                      onClick={handleCloseBottomSheet}
+                    >
+                      ✋
+                    </SimpleButton>
+                    <SimpleButton
+                      onClick={handleCloseBottomSheet}
+                      sx={{
+                        backgroundColor: "background.default",
+                        marginLeft: "1rem",
+                      }}
+                    >
+                      Leave quitely ✌️
+                    </SimpleButton>
+                  </div>
+                </Stack>
+              </Grid>
+            </Grid>
           </Paper>
         }
         footer={
-          <Paper elevation={0} sx={{ margin: 0 }}>
-            <Grid container sx={{ width: "100%", cursor: "-moz-grabbing" }}>
+          <Paper elevation={0} sx={{ margin: 0, height: "100%" }}>
+            {/* <Grid container sx={{ width: "100%", cursor: "-moz-grabbing" }}>
               <Grid item xs={12}>
                 <Stack direction="row" spacing={2} justifyContent="flex-end">
                   <SimpleButton sx={{ backgroundColor: "background.default" }}>
@@ -83,7 +121,7 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                   </SimpleButton>
                 </Stack>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Paper>
         }
         // onSpringStart={async (event) => {
@@ -135,6 +173,7 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                             width: "1rem",
                             height: "1rem",
                             borderRadius: "50%",
+                            backgroundColor: "Background.paper",
                           }}
                         />
                       }
@@ -307,7 +346,7 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                     </Stack>
                   </Grid>,
 
-                  10
+                  30
                 )}
               </Grid>
             </Grid>
