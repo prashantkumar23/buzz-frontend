@@ -10,8 +10,7 @@ import Link from "next/link";
 import { BottomSheet, BottomSheetRef } from "react-spring-bottom-sheet";
 import "react-spring-bottom-sheet/dist/style.css";
 
-import { SimpleButton, SimpleInput, ProfileInfo } from "../../components";
-import { coreThemeObj } from "../../theme/theme";
+import { SimpleButton, ProfileInfo } from "../../components";
 
 interface CustomBottomSheetProps {
   openBottomSheet: boolean;
@@ -59,13 +58,6 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
           maxHeight * 0.6,
         ]}
         header={
-          // <Paper elevation={0}>
-          //   <div style={{ cursor: "-moz-grabbing" }}>
-          //     <Typography variant="h5">
-          //       What&apos;s the best framework?
-          //     </Typography>
-          //   </div>
-          // </Paper>
           <Paper elevation={0} sx={{ margin: 0 }}>
             <Grid container sx={{ width: "100%", cursor: "-moz-grabbing" }}>
               <Grid item xs={12}>
@@ -139,17 +131,6 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
             }}
             elevation={0}
           >
-            {/* <div style={{ display: "none" }}>
-            <SimpleButton
-              ref={focusRef}
-              onClick={() =>
-                //@ts-ignore
-                sheetRef.current.snapTo(({ maxHeight }) => maxHeight / 2)
-              }
-            >
-              Middle
-            </SimpleButton>
-          </div> */}
             <Grid container spacing={4}>
               {generate(
                 <Grid item xs={2} sm={2} md={1}>
@@ -181,8 +162,8 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                           "https://www.imagediamond.com/blog/wp-content/uploads/2019/11/attratve-Boy-DP4.jpg"
                         }
                         sx={{
-                          width: "3rem",
-                          height: "3rem",
+                          width: "4rem",
+                          height: "4rem",
                           cursor: "pointer",
                         }}
                         onClick={() => setOpenProfileInfo(true)}
@@ -230,22 +211,6 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                   alignItems="flex-start"
                 >
                   <Typography variant="h6">Followed by the speaker</Typography>
-                  <SimpleInput
-                    placeholder="Search in the room"
-                    size="small"
-                    sx={{
-                      backgroundColor: "background.default",
-                      "& .MuiInputBase-input": {
-                        transition: coreThemeObj.transitions.create("width"),
-                        [coreThemeObj.breakpoints.up("md")]: {
-                          width: "12rem",
-                          "&:focus": {
-                            width: "22rem",
-                          },
-                        },
-                      },
-                    }}
-                  />
                 </Stack>
               </Grid>
 
@@ -280,7 +245,7 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                     </Link>
                   </Stack>
                 </Grid>,
-                10
+                30
               )}
             </Grid>
           </Paper>
@@ -343,7 +308,7 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                     </Stack>
                   </Grid>,
 
-                  30
+                  50
                 )}
               </Grid>
             </Grid>
