@@ -126,8 +126,8 @@ export default function Feed() {
                   visibility: "hidden",
                 },
               }}
-              // onClick={() => setBottomSheet(true)}
-              onClick={() => setStartRoom(true)}
+              onClick={() => setBottomSheet(true)}
+              // onClick={() => setStartRoom(true)}
             >
               <Typography color="primary">Start a room 😎</Typography>
             </Fab>
