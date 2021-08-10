@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, cloneElement } from "react";
+import { useEffect, useState, useRef } from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -7,23 +7,15 @@ import { BottomSheet, BottomSheetRef } from "react-spring-bottom-sheet";
 // import "react-spring-bottom-sheet/dist/style.css";
 
 import { ProfileInfo } from "../../components";
-import { ListenerAvatar } from "../VoiceAvatars/ListenerAvatar";
-import { SpeakerAvatar } from "../VoiceAvatars/SpeakerAvatar";
+import { ListenerAvatar } from "./VoiceAvatars/ListenerAvatar";
+import { SpeakerAvatar } from "./VoiceAvatars/SpeakerAvatar";
 // import { ListenerFooter } from "./ListenerFooter";
 import { SpeakerFooter } from "./SpeakerFooter";
-import { useLeavePrevention } from "../../hooks/useLeavePrevention";
+// import { useLeavePrevention } from "../../hooks/useLeavePrevention";
 
 interface CustomBottomSheetProps {
   openBottomSheet: boolean;
   handleCloseBottomSheet: () => void;
-}
-
-function generate(element: React.ReactElement, times: number) {
-  return Array.from(Array(times)).map((value) =>
-    cloneElement(element, {
-      key: value,
-    })
-  );
 }
 
 export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
@@ -33,11 +25,18 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
   const focusRef = useRef<HTMLButtonElement>(null);
   const sheetRef = useRef<BottomSheetRef>(null);
   const [openProfileInfo, setOpenProfileInfo] = useState(false);
-  useLeavePrevention();
+
   // const [todos, setTodos] = useState<any>([]);
+
+  // useLeavePrevention();
+
+  // if (sheetRef.current?.height > 300) {
+  //   console.log("BottomSheetOpened");
+  // }
 
   useEffect(() => {
     if (focusRef.current) {
+      console.log("Opened");
       focusRef.current.focus();
     }
   }, []);
@@ -110,12 +109,11 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
             elevation={0}
           >
             <Grid container spacing={4}>
-              {generate(
-                <Grid item xs={4} sm={2} md={2}>
+              {Array.from(Array(10)).map((_, index) => {
+                <Grid item xs={4} sm={2} md={2} key={index}>
                   <SpeakerAvatar />
-                </Grid>,
-                10
-              )}
+                </Grid>;
+              })}
             </Grid>
           </Paper>
 
@@ -137,18 +135,14 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
                   paddingTop: 0,
                 }}
               >
-                <Stack
-                  direction="row"
-                  justifyContent="space-between"
-                  alignItems="flex-start"
-                >
+                <Stack direction="row" alignItems="flex-start">
                   <Typography variant="h6">Followed by the speaker</Typography>
                 </Stack>
               </Grid>
 
               {Array.from(Array(30)).map((_, index) => (
-                <Grid item xs={3} sm={2} md={2}>
-                  <ListenerAvatar key={index} id={index} />
+                <Grid item xs={3} sm={2} md={2} key={index}>
+                  <ListenerAvatar id={index} />
                 </Grid>
               ))}
             </Grid>
@@ -182,8 +176,8 @@ export const CustomBottomSheet: React.FC<CustomBottomSheetProps> = ({
               </Grid>
 
               {Array.from(Array(150)).map((_, index) => (
-                <Grid item xs={3} sm={2} md={2}>
-                  <ListenerAvatar key={index} id={index} />
+                <Grid item xs={3} sm={2} md={2} key={index}>
+                  <ListenerAvatar id={index} />
                 </Grid>
               ))}
             </Grid>

@@ -15,7 +15,11 @@ cache.compat = true;
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
-  const { value: isDark, toggle: toggleDarkMode } = useDarkMode(true);
+  const {
+    value: isDark,
+
+    //  toggle: toggleDarkMode
+  } = useDarkMode(true);
   const themeConfig = isDark ? darkTheme : lightTheme;
   const [isMounted, setIsMounted] = useState(false);
 
@@ -111,7 +115,7 @@ export default function MyApp(props: AppProps) {
             // }
           `}
         />
-        <button onClick={toggleDarkMode}>Click</button>
+        {/* <button onClick={toggleDarkMode}>Click</button> */}
         {isMounted && <Component {...pageProps} />}
       </ThemeProvider>
     </CacheProvider>

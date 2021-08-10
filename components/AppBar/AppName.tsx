@@ -5,7 +5,7 @@ export const AppName = () => {
   return (
     <Link href="/" passHref>
       <Typography
-        variant="h3"
+        variant="h4"
         sx={{
           position: "absolute",
           paddingBottom: 0,

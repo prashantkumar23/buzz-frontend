@@ -12,7 +12,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import Link from "next/link";
 
-import { AppName } from "../AppName";
+import { AppName } from "./AppName";
 import { Emoji } from "../Emoji";
 import { FollowingYou } from "../Notification/NoticationCards/Following";
 import { Invite } from "../Notification/NoticationCards/Invite";

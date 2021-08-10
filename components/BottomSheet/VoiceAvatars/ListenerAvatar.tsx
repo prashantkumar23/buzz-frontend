@@ -1,5 +1,5 @@
 import { Stack, Avatar, Typography } from "@material-ui/core";
-import { names } from "../../helpers/name";
+import { names } from "../../../helpers/name";
 
 export const ListenerAvatar: React.FC<{ id: number }> = ({ id }) => {
   return (

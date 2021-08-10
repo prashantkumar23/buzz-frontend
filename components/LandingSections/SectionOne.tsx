@@ -2,7 +2,6 @@ import Link from "next/link";
 import { SimpleButton } from "../Button/SimpleButton";
 import Typography from "@material-ui/core/Typography";
 import Stack from "@material-ui/core/Stack";
-import Divider from "@material-ui/core/Divider";
 // import { makeStyles } from "@material-ui/styles";
 
 import { coreThemeObj } from "../../theme/theme";
@@ -31,14 +30,14 @@ export const SectionOne = () => {
       }}
       spacing={3}
     >
-      <Typography variant="h1">THE</Typography>
-      <Typography variant="h1">SOCIAL</Typography>
-      <Typography variant="h1">AUDIO</Typography>
-      <Typography variant="h1">APP</Typography>
-      <Divider />
+      <Typography sx={{ fontSize: "4rem" }}>
+        <div>THE</div>
+        <div>SOCIAL</div>
+        <div>AUDIO</div>
+        <div>APP</div>
+      </Typography>
       <Typography variant="h6">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure iste nam
-        blanditiis ut natus ipsa
+        Lorem ipsum dolor sit amet consectetur
       </Typography>
       <Link href="/join" passHref>
         <SimpleButton
