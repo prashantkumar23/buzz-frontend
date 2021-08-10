@@ -45,7 +45,6 @@ export const RoomCard: React.FC<RoomCardProps> = ({ roomId }) => {
           },
         }}
         elevation={2}
-        variant="outlined"
         onClick={() => console.log("Clicked")}
       >
         <CardHeader
