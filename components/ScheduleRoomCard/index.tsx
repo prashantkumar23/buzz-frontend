@@ -93,6 +93,7 @@ export const ScheduleRoomCard: React.FC<ScheduleRoomProps> = ({
             <Stack
               flexDirection="row"
               justifyContent="space-between"
+              alignItems="center"
               sx={{ width: "100%" }}
             >
               <IconButton onClick={handleCloseScheduleRoom}>

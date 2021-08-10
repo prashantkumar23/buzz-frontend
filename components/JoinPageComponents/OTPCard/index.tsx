@@ -1,9 +1,5 @@
-import React, { forwardRef } from "react";
 import Typography from "@material-ui/core/Typography";
 import Stack from "@material-ui/core/Stack";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import { makeStyles } from "@material-ui/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -13,19 +9,20 @@ import {
   Controller,
 } from "react-hook-form";
 
-import { Base } from "../Base";
-import { SimpleButton } from "../Button/SimpleButton";
-import { CenterText } from "../CenterText";
-import { SimpleInput } from "../Inputs/SimpleInput";
+import { Base } from "../../Base";
+import { SimpleButton } from "../../Button/SimpleButton";
+import { CenterText } from "../../CenterText";
 import { ArrowForward } from "@material-ui/icons";
-import { coreThemeObj } from "../../theme/theme";
+import { makeStyles } from "@material-ui/styles";
+import { coreThemeObj } from "../../../theme/theme";
+import { SimpleInput } from "../../Inputs/SimpleInput";
 
-interface PhoneCardProps {
+interface OTPProps {
   setActiveStep: (page: number) => void;
 }
 
 const schema = yup.object().shape({
-  phone: yup.string().length(13).required(),
+  otp: yup.string().length(6).required(),
 });
 
 const useStyles = makeStyles({
@@ -36,31 +33,18 @@ const useStyles = makeStyles({
   },
 });
 
-const CustomInput = forwardRef<any, any>(({ field, ...props }, ref) => {
-  return (
-    <SimpleInput
-      {...field}
-      inputRef={ref}
-      {...props}
-      placeholder="Phone number"
-      size="small"
-    />
-  );
-});
-
-export const PhoneCard: React.FC<PhoneCardProps> = ({ setActiveStep }) => {
+export const OTPCard: React.FC<OTPProps> = ({ setActiveStep }) => {
+  // const [otp, setOtp] = useState("");
   const classes = useStyles();
 
-  const onSubmit: SubmitHandler<{ phone: string }> = (data: {
-    phone: string;
-  }) => {
-    console.log("data", data);
-    setActiveStep(1);
+  const onSubmit: SubmitHandler<{ otp: string }> = (data: { otp: string }) => {
+    console.log("otp", data);
+    setActiveStep(2);
   };
 
-  const methods = useForm<{ phone: string }>({
+  const methods = useForm<{ otp: string }>({
     resolver: yupResolver(schema),
-    defaultValues: { phone: "" },
+    defaultValues: { otp: "" },
   });
 
   return (
@@ -69,11 +53,10 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ setActiveStep }) => {
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
             <Typography variant="h6" className={classes.typographyText}>
-              ☎️ Enter your phone number
+              🔒 Enter the code we have just texted you
             </Typography>
           </CenterText>
         </Stack>
-        {/* <PhoneInput /> */}
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <Stack
@@ -83,16 +66,40 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ setActiveStep }) => {
               sx={{ width: "100%" }}
             >
               <Controller
-                name="phone"
+                name="otp"
                 control={methods.control}
                 render={({ field }) => (
-                  <PhoneInput
+                  <SimpleInput
                     {...field}
-                    defaultCountry="IN"
-                    inputComponent={CustomInput}
+                    size="small"
+                    // sx={{ textAlign: "center" }}
+                    inputProps={{
+                      maxLength: 6,
+                      style: {
+                        textAlign: "center",
+                        letterSpacing: "1rem",
+                      },
+                    }}
                   />
                 )}
               />
+
+              <SimpleButton
+                disableRipple
+                sx={{
+                  backgroundColor: "transparent",
+                  height: "1rem",
+                  borderColor: "transparent",
+                  margin: 0,
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                  },
+                }}
+              >
+                <Typography variant="caption">
+                  Didn&apos;t receive Tap to resend
+                </Typography>
+              </SimpleButton>
               <SimpleButton
                 disableRipple
                 sx={{
@@ -110,13 +117,6 @@ export const PhoneCard: React.FC<PhoneCardProps> = ({ setActiveStep }) => {
             </Stack>
           </form>
         </FormProvider>
-
-        <CenterText>
-          <Typography variant="caption">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,
-            cupiditate. Et aspernatur in consequatur natus corrupti quibusdam,
-          </Typography>
-        </CenterText>
       </Stack>
     </Base>
   );

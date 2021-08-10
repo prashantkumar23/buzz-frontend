@@ -5,8 +5,8 @@ import Bye from "@material-ui/icons/ExitToApp";
 import AddPeople from "@material-ui/icons/Add";
 import Speaker from "@material-ui/icons/KeyboardVoice";
 import IconButton from "@material-ui/core/IconButton";
-import { coreThemeObj } from "../../theme/theme";
-import { SimpleButton } from "../Button/SimpleButton";
+import { coreThemeObj } from "../../../theme/theme";
+import { SimpleButton } from "../../Button/SimpleButton";
 import { Typography } from "@material-ui/core";
 
 export const SpeakerFooter = () => {

@@ -1,5 +1,8 @@
+import * as React from "react";
 import Typography from "@material-ui/core/Typography";
 import Stack from "@material-ui/core/Stack";
+import CheckIcon from "@material-ui/icons/Check";
+import { makeStyles } from "@material-ui/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -9,13 +12,15 @@ import {
   Controller,
 } from "react-hook-form";
 
-import { Base } from "../Base";
-import { SimpleButton } from "../Button/SimpleButton";
-import { SimpleInput } from "../Inputs/SimpleInput";
-import { CenterText } from "../CenterText";
-import { ArrowForward } from "@material-ui/icons";
-import { makeStyles } from "@material-ui/styles";
-import { coreThemeObj } from "../../theme/theme";
+import { coreThemeObj } from "../../../theme/theme";
+import { Base } from "../../Base";
+import { SimpleButton } from "../../Button/SimpleButton";
+import { SimpleInput } from "../../Inputs/SimpleInput";
+import { CenterText } from "../../CenterText";
+
+interface UsernameCardProps {
+  setActiveStep: (page: number) => void;
+}
 
 const useStyles = makeStyles({
   typographyText: {
@@ -26,29 +31,27 @@ const useStyles = makeStyles({
 });
 
 const schema = yup.object().shape({
-  password: yup.string().max(20).min(3).required(),
+  username: yup.string().max(20).min(3).required(),
 });
 
-interface PasswordCardProps {
-  setActiveStep: (page: number) => void;
-}
-
-export const PasswordCard: React.FC<PasswordCardProps> = ({
+export const UsernameCard: React.FC<UsernameCardProps> = ({
   setActiveStep,
 }) => {
   const classes = useStyles();
 
-  const onSubmit: SubmitHandler<{ password: string }> = (data: {
-    password: string;
+  const onSubmit: SubmitHandler<{ username: string }> = (data: {
+    username: string;
   }) => {
-    console.log("password", data);
-    setActiveStep(3);
+    console.log("username", data);
+    setActiveStep(0);
   };
 
-  const methods = useForm<{ password: string }>({
+  const methods = useForm<{ username: string }>({
     resolver: yupResolver(schema),
-    defaultValues: { password: "" },
+    defaultValues: { username: "" },
   });
+
+  console.log(methods.watch("username"));
 
   return (
     <Base>
@@ -56,7 +59,7 @@ export const PasswordCard: React.FC<PasswordCardProps> = ({
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
             <Typography variant="h6" className={classes.typographyText}>
-              Type a strong password
+              🤓 Choose your username
             </Typography>
           </CenterText>
         </Stack>
@@ -69,18 +72,16 @@ export const PasswordCard: React.FC<PasswordCardProps> = ({
               sx={{ width: "100%" }}
             >
               <Controller
-                name="password"
+                name="username"
                 control={methods.control}
                 render={({ field }) => (
-                  <SimpleInput
-                    {...field}
-                    size="small"
-                    type="password"
-                    placeholder="Something strong..."
-                  />
+                  <SimpleInput {...field} placeholder="@" size="small" />
                 )}
               />
 
+              <Typography variant="caption">
+                Username can be used for the login
+              </Typography>
               <SimpleButton
                 disableRipple
                 sx={{
@@ -90,10 +91,10 @@ export const PasswordCard: React.FC<PasswordCardProps> = ({
                     backgroundColor: "background.paper",
                   },
                 }}
-                endIcon={<ArrowForward />}
+                endIcon={<CheckIcon />}
                 type="submit"
               >
-                Next
+                Create my account
               </SimpleButton>
             </Stack>
           </form>

@@ -10,10 +10,10 @@ import {
   Controller,
 } from "react-hook-form";
 
-import { Base } from "../Base";
-import { SimpleButton } from "../Button/SimpleButton";
-import { SimpleInput } from "../Inputs/SimpleInput";
-import { CenterText } from "../CenterText";
+import { Base } from "../../Base";
+import { SimpleButton } from "../../Button/SimpleButton";
+import { SimpleInput } from "../../Inputs/SimpleInput";
+import { CenterText } from "../../CenterText";
 import { ArrowForward } from "@material-ui/icons";
 
 interface EmailCardProps {

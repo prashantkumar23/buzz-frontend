@@ -6,7 +6,7 @@ import Stack from "@material-ui/core/Stack";
 import { BottomSheet, BottomSheetRef } from "react-spring-bottom-sheet";
 // import "react-spring-bottom-sheet/dist/style.css";
 
-import { ProfileInfo } from "../../components";
+import { ProfileInfo } from "../..";
 import { ListenerAvatar } from "./VoiceAvatars/ListenerAvatar";
 import { SpeakerAvatar } from "./VoiceAvatars/SpeakerAvatar";
 // import { ListenerFooter } from "./ListenerFooter";

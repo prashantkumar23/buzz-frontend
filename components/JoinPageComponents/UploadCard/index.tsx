@@ -5,12 +5,12 @@ import AddIcon from "@material-ui/icons/Add";
 import { ArrowForward } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 
-import { Base } from "../Base";
-import { SimpleButton } from "../Button/SimpleButton";
-import { UploadButton } from "../Button/UplaodButton";
-import { LinkButton } from "../Button/LinkButton";
-import { CenterText } from "../CenterText";
-import { coreThemeObj } from "../../theme/theme";
+import { Base } from "../../Base";
+import { SimpleButton } from "../../Button/SimpleButton";
+import { UploadButton } from "../../Button/UplaodButton";
+import { LinkButton } from "../../Button/LinkButton";
+import { CenterText } from "../../CenterText";
+import { coreThemeObj } from "../../../theme/theme";
 
 interface UploadCardProps {
   setActiveStep: (page: number) => void;

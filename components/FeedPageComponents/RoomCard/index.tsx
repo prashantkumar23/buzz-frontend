@@ -12,7 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import PersonIcon from "@material-ui/icons/Person";
 import ForumRoundedIcon from "@material-ui/icons/ForumRounded";
 
-import { coreThemeObj } from "../../theme/theme";
+import { coreThemeObj } from "../../../theme/theme";
 import { Breadcrumbs } from "@material-ui/core";
 
 interface RoomCardProps {

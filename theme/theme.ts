@@ -31,7 +31,7 @@ export const coreThemeObj = createTheme({
             '"Segoe UI Emoji"',
             '"Segoe UI Symbol"',
         ].join(',')
-    }
+    },
 })
 
 

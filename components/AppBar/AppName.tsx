@@ -14,7 +14,7 @@ export const AppName = () => {
         }}
         color="primary"
       >
-        Juno
+        Buzz
       </Typography>
     </Link>
   );

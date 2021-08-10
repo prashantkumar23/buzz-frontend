@@ -1,8 +1,6 @@
 import * as React from "react";
 import Typography from "@material-ui/core/Typography";
 import Stack from "@material-ui/core/Stack";
-import CheckIcon from "@material-ui/icons/Check";
-import { makeStyles } from "@material-ui/styles";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -12,15 +10,13 @@ import {
   Controller,
 } from "react-hook-form";
 
-import { coreThemeObj } from "../../theme/theme";
-import { Base } from "../Base";
-import { SimpleButton } from "../Button/SimpleButton";
-import { SimpleInput } from "../Inputs/SimpleInput";
-import { CenterText } from "../CenterText";
-
-interface UsernameCardProps {
-  setActiveStep: (page: number) => void;
-}
+import { Base } from "../../Base";
+import { SimpleButton } from "../../Button/SimpleButton";
+import { SimpleInput } from "../../Inputs/SimpleInput";
+import { CenterText } from "../../CenterText";
+import { ArrowForward } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/styles";
+import { coreThemeObj } from "../../../theme/theme";
 
 const useStyles = makeStyles({
   typographyText: {
@@ -31,27 +27,33 @@ const useStyles = makeStyles({
 });
 
 const schema = yup.object().shape({
-  username: yup.string().max(20).min(3).required(),
+  fullname: yup.string().max(20).min(3).required(),
 });
 
-export const UsernameCard: React.FC<UsernameCardProps> = ({
+interface NameCardProps {
+  heading: string;
+  buttonText: string;
+  setActiveStep: (page: number) => void;
+}
+
+export const NameCard: React.FC<NameCardProps> = ({
+  heading,
+  buttonText,
   setActiveStep,
 }) => {
   const classes = useStyles();
 
-  const onSubmit: SubmitHandler<{ username: string }> = (data: {
-    username: string;
+  const onSubmit: SubmitHandler<{ fullname: string }> = (data: {
+    fullname: string;
   }) => {
-    console.log("username", data);
-    setActiveStep(0);
+    console.log("fullname", data);
+    setActiveStep(3);
   };
 
-  const methods = useForm<{ username: string }>({
+  const methods = useForm<{ fullname: string }>({
     resolver: yupResolver(schema),
-    defaultValues: { username: "" },
+    defaultValues: { fullname: "" },
   });
-
-  console.log(methods.watch("username"));
 
   return (
     <Base>
@@ -59,7 +61,7 @@ export const UsernameCard: React.FC<UsernameCardProps> = ({
         <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
           <CenterText>
             <Typography variant="h6" className={classes.typographyText}>
-              🤓 Choose your username
+              {heading}
             </Typography>
           </CenterText>
         </Stack>
@@ -72,15 +74,13 @@ export const UsernameCard: React.FC<UsernameCardProps> = ({
               sx={{ width: "100%" }}
             >
               <Controller
-                name="username"
+                name="fullname"
                 control={methods.control}
-                render={({ field }) => (
-                  <SimpleInput {...field} placeholder="@" size="small" />
-                )}
+                render={({ field }) => <SimpleInput {...field} size="small" />}
               />
 
               <Typography variant="caption">
-                Username can be used for the login
+                People use real name at Juno
               </Typography>
               <SimpleButton
                 disableRipple
@@ -91,10 +91,10 @@ export const UsernameCard: React.FC<UsernameCardProps> = ({
                     backgroundColor: "background.paper",
                   },
                 }}
-                endIcon={<CheckIcon />}
+                endIcon={<ArrowForward />}
                 type="submit"
               >
-                Create my account
+                {buttonText}
               </SimpleButton>
             </Stack>
           </form>
